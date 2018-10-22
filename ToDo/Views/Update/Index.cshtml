@@ -12,17 +12,25 @@
     {
         @Html.HiddenFor(x => x.ID)
         @Html.HiddenFor(x => x.Priority)
-        <div class="row td-row">
-            <div class="col-md-3 item-title">@Html.TextBoxFor(x => x.Title)</div>
-            <div class="col-md-7 item-desc">@Html.TextAreaFor(x => x.Description, new { @cols = 15, @rows = 5 })</div>
-            <div class="col-md-1">
-                @Html.DropDownListFor(x => x.Status, Enum.GetValues(typeof(ToDo.Models.ToDoItem.Progress)).Cast<ToDo.Models.ToDoItem.Progress>().Select(v => new SelectListItem
-       {
-           Text = v.ToString(),
-           Value = ((int)v).ToString()
-       }).ToList())
+    <div class="row td-row">
+        <div class="col-md-1 col-sm-6">@Html.Label("Task Title")</div>
+        <div class="col-md-4 col-sm-6 ">@Html.TextBoxFor(x => x.Title)</div>
+        <div class="col-md-1 col-sm-6">@Html.Label("Task Description")</div>
+        <div class="col-md-4">@Html.TextAreaFor(x => x.Description, new { @cols = 50, @rows = 5 })</div>
+        <div class="col-md-1 col-sm-6">@Html.Label("Task Status")</div>
+        <div class="col-md-1 col-sm-6">
+            @Html.DropDownListFor(x => x.Status, Enum.GetValues(typeof(ToDo.Models.ToDoItem.Progress)).Cast<ToDo.Models.ToDoItem.Progress>().Select(v => new SelectListItem
+   {
+       Text = v.ToString(),
+       Value = ((int)v).ToString()
+   }).ToList())
         </div>
-        <div class="col-md-1"><input class="button" type="submit" value="Update" name="Update" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2"><input class="button" type="submit" value="Update" name="Update" /></div>
+        <div class="col-md-5"></div>
     </div>
 }
 
